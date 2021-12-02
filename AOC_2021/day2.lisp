@@ -20,12 +20,6 @@
 (setf *depth* 0)
 (defparameter *aim* 0)
 
-(defun up (x)
-  (incf *aim* (* -1 x)))
-
-(defun down (x)
-  (incf *aim* x))
-
 (defun forward (x)
   (list
     (incf *horizontal-position* x) 
