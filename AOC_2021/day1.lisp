@@ -1,4 +1,4 @@
-(defparameter *input1* (uiop:read-file-lines "~/Documents/Lisp/AOC_2021/day1_input"))
+(defparameter *input1* (uiop:read-file-lines "~/Documents/Lisp/AOC/AOC_2021/day1_input"))
 
 (setf *input1* (map 'list 'parse-integer *input1*))
 
