@@ -78,9 +78,7 @@
 
 (time 
   (progn (dijkstra-3)
-         (aops:each (lambda (x) -1) unvisited)
          (dijkstra-3)
-         (aops:each (lambda (x) -1) unvisited)
          (dijkstra-3)))
 
 (let ((ans-b (aref cost-map (elt target 0) (elt target 1))))
