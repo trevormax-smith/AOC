@@ -1,7 +1,6 @@
 (defparameter *testing* nil)
 (defparameter *input15* nil)
 (defparameter cost-map nil)
-(defparameter unvisited nil)
 (defparameter dims nil)
 (defparameter target nil)
 
@@ -22,9 +21,6 @@
   (setf cost-map
         (make-array dims
                     :initial-element 100000))
-  (setf unvisited
-        (make-array dims
-                    :initial-element -1))
   (setf target (list (- (elt dims 0) 1) (- (elt dims 1) 1))))
 
 (load-input)
@@ -53,7 +49,6 @@
 
 (setf (aref cost-map 0 0) 0)
 (dijkstra-3)
-(aops:each (lambda (_) -1) unvisited)
 (dijkstra-3)
 
 (let ((ans-a (aref cost-map (elt target 0) (elt target 1))))
