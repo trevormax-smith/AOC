@@ -1,7 +1,7 @@
 (ql:quickload "uiop")
 (ql:quickload "split-sequence")
 
-(defparameter *testing* t)
+(defparameter *testing* nil)
 (defparameter *input* (list))
 
 (defmacro split-splitter (delim)
@@ -14,9 +14,19 @@
                                  (funcall (split-splitter #\,)
                                           (uiop:read-file-lines filename))))))
 
-(defun part-a () 2)
+(defun fully-contains? (pair &optional (flag nil))
+  (or (and (>= (car (car pair)) (car (cadr pair)))
+           (<= (cadr (car pair)) (cadr (cadr pair))))
+      (if flag nil (fully-contains? (reverse pair) t))))
 
-(defun part-b () 0)
+(defun overlaps? (pair &optional (flag nil))
+  (or (and (>= (cadr (cadr pair)) (car (car pair)))
+           (<= (cadr (cadr pair)) (cadr (car pair))))
+      (if flag nil (overlaps? (reverse pair) t))))
+
+(defun part-a () (count 't (mapcar 'fully-contains? *input*)))
+
+(defun part-b () (count 't (mapcar 'overlaps? *input*)))
 
 (let ((a-ans (part-a))
       (b-ans (part-b)))
@@ -24,6 +34,6 @@
       (assert (= 2 a-ans))
       (print a-ans))
   (if *testing*
-      (assert (= 0 b-ans))
+      (assert (= 4 b-ans))
       (print b-ans)))
 
