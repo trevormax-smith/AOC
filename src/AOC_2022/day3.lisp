@@ -1,10 +1,11 @@
 (ql:quickload "uiop")
 (ql:quickload "split-sequence")
+(in-package :aoc)
 
 (defparameter *testing* nil)
 (defparameter *input* (list))
 
-(let ((filename "~/Documents/Lisp/AOC/AOC_2022/inputs/3"))
+(let ((filename "~/Documents/Lisp/AOC/src/AOC_2022/inputs/3"))
   (if *testing* (setf filename (concatenate 'string filename "_test")))
   (setf *input* (mapcar (lambda (x) (map 'list 'identity x)) (uiop:read-file-lines filename))))
 
@@ -46,3 +47,5 @@
   (if *testing*
       (assert (= 70 b-ans))
       (print b-ans)))
+
+(with-gensyms)
