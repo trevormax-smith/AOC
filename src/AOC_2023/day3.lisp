@@ -119,12 +119,6 @@ Return a new array, or write into the optional 3rd argument."
 
 (defun part-b ()
   (mark-valids (lambda (c) (char= #\* c)) 'push-gear-box *input*)
-  ; (loop for i from 0 below (length *gearvalidlist*) do
-        ; (setf (elt *gearvalidlist* i)
-              ; (mark-valids
-                ; (lambda (c) (equalp #\* c))
-                ; 'true-around
-                ; (array-map 'identity (elt *gearvalidlist* i)))))
   (let ((gears
           (loop for ga in *geararraylist*
                 collect
@@ -135,7 +129,6 @@ Return a new array, or write into the optional 3rd argument."
                                               (access-array-row *gear-valid-map* i)
                                               '())
                              collect gearnums)))))
-    (print gears)
     (apply '+
            (map 'list (lambda (x) (apply '* x))
                 (remove-if-not (lambda (x) (= (length x) 2))
